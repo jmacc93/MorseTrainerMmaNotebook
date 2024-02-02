@@ -1,2 +1,3 @@
 # MorseTrainerMmaNotebook
-My mathematica notebook trainer for morse code
+
+This is the mathematica notebook I used to learn morse code

@@ -1,0 +1,1106 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 13.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     45039,       1098]
+NotebookOptionsPosition[     41437,       1032]
+NotebookOutlinePosition[     41845,       1048]
+CellTagsIndexPosition[     41802,       1045]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+Run the initialization cells (from the \"Evaluation\" menu: \"Evaluate \
+initialization cells\")
+
+Then go to one of the \"Character \[Rule] code\", \"Code \[Rule] Character\", \
+or \"Beeps \[Rule] Character\" sections and follow the directions there
+
+You can change how characters are selected by going to the \"Character \
+selection method\" and evaluating one of the cells there
+The selection method is which characters you're challenged with and when. For \
+instance, the default \"score\" method adds new characters once you've \
+increased the \"score\" of already added characters enough\
+\>", "Text",
+ CellChangeTimes->{{3.915868783496885*^9, 3.915868838296137*^9}, {
+  3.9158689098644905`*^9, 3.915868974079234*^9}, {3.9158690549032965`*^9, 
+  3.915869095767403*^9}, {3.9158692964002476`*^9, 3.915869343684924*^9}, {
+  3.9158694416689177`*^9, 
+  3.9158694674849157`*^9}},ExpressionUUID->"1362ba3e-3b92-4aa9-9cea-\
+769a42585623"],
+
+Cell[CellGroupData[{
+
+Cell["Beep making", "Title",
+ CellChangeTimes->{{3.915868700233899*^9, 
+  3.9158687051295443`*^9}},ExpressionUUID->"cbf887a3-7f07-47db-9f5e-\
+eb16687b62ea"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"rampup", "=", 
+   RowBox[{"Function", "[", 
+    RowBox[{"t", ",", 
+     RowBox[{"LogisticSigmoid", "[", 
+      RowBox[{"10", 
+       RowBox[{"(", 
+        RowBox[{"t", "-", "0.5"}], ")"}]}], "]"}]}], "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.915863800669697*^9, 3.9158638077160397`*^9}, {
+  3.915868030590093*^9, 3.9158680308342104`*^9}, {3.9158683551730947`*^9, 
+  3.9158683584927964`*^9}},
+ CellLabel->"In[1]:=",ExpressionUUID->"a62efcec-734f-497e-8210-3e238d33e44f"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"beepSpeed", "=", "0.1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"longBeepRatio", "=", "4"}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.915007138029418*^9, 3.9150072459554434`*^9}, {
+  3.9150073041219473`*^9, 3.915007328986722*^9}, {3.915204374871049*^9, 
+  3.9152043762702703`*^9}, {3.915449244775051*^9, 3.915449255486395*^9}, {
+  3.915863640125121*^9, 3.91586367408872*^9}, {3.9158637042365227`*^9, 
+  3.915863734076356*^9}, {3.915863889555307*^9, 3.9158639379789276`*^9}, {
+  3.9158640227154922`*^9, 3.915864088689499*^9}, {3.9158641599460554`*^9, 
+  3.9158641603778095`*^9}, {3.915867207468543*^9, 3.9158672778068075`*^9}, {
+  3.915868310461302*^9, 3.9158683355246754`*^9}},
+ CellLabel->"In[2]:=",ExpressionUUID->"993864db-2192-45c7-9e58-e07a8e870b4c"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"toneFreq", "=", "300"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"tra", "=", "80"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"sd", "=", "beepSpeed"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"shortBeep", "=", 
+   RowBox[{"Audio", "@", 
+    RowBox[{"Play", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"rampup", "[", 
+        RowBox[{"tra", " ", "t"}], "]"}], 
+       RowBox[{"rampup", "[", 
+        RowBox[{
+         RowBox[{"-", "tra"}], 
+         RowBox[{"(", 
+          RowBox[{"t", "-", "sd"}], ")"}]}], "]"}], 
+       RowBox[{"Sin", "[", 
+        RowBox[{"toneFreq", " ", "2", " ", "Pi", " ", "t"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "sd"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"ld", "=", 
+   RowBox[{"sd", "*", "longBeepRatio"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"longBeep", "=", 
+   RowBox[{"Audio", "@", 
+    RowBox[{"Play", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"(", 
+        RowBox[{
+         RowBox[{"rampup", "[", 
+          RowBox[{"tra", " ", "t"}], "]"}], 
+         RowBox[{"rampup", "[", 
+          RowBox[{
+           RowBox[{"-", "tra"}], 
+           RowBox[{"(", 
+            RowBox[{"t", "-", "ld"}], ")"}]}], "]"}]}], ")"}], 
+       RowBox[{"Sin", "[", 
+        RowBox[{"toneFreq", " ", "2", " ", "Pi", " ", "t"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "ld"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"spaceSilence", "=", 
+   RowBox[{"Audio", "@", 
+    RowBox[{"Play", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "0.1"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"gapSilence", "=", 
+   RowBox[{"Audio", "@", 
+    RowBox[{"Play", "[", 
+     RowBox[{"0", ",", 
+      RowBox[{"{", 
+       RowBox[{"t", ",", "0", ",", "0.3"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"AudioPlay", "@", 
+  RowBox[{"AudioJoin", "[", 
+   RowBox[{"{", 
+    RowBox[{"shortBeep", ",", "spaceSilence", ",", "longBeep"}], "}"}], 
+   "]"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.915007138029418*^9, 3.9150072459554434`*^9}, {
+  3.9150073041219473`*^9, 3.915007328986722*^9}, {3.915204374871049*^9, 
+  3.9152043762702703`*^9}, {3.915449244775051*^9, 3.915449255486395*^9}, {
+  3.915863640125121*^9, 3.91586367408872*^9}, {3.9158637042365227`*^9, 
+  3.915863734076356*^9}, {3.915863889555307*^9, 3.9158639379789276`*^9}, {
+  3.9158640227154922`*^9, 3.915864088689499*^9}, {3.9158641599460554`*^9, 
+  3.9158641603778095`*^9}, {3.915867207468543*^9, 3.9158672778068075`*^9}, {
+  3.915868310461302*^9, 3.91586834246154*^9}},
+ CellLabel->"In[4]:=",ExpressionUUID->"3e2682ae-2e64-4bdd-a184-bf39cdec2b9f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"toAudio", "=", 
+   RowBox[{"Function", "[", 
+    RowBox[{"state", ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"AudioJoin", "@", 
+        RowBox[{"Append", "[", 
+         RowBox[{"#", ",", "gapSilence"}], "]"}]}], "&"}], "@", 
+      RowBox[{"Riffle", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"#", "===", "0"}], ",", "shortBeep", ",", "longBeep"}], 
+           "]"}], "&"}], "/@", "state"}], ",", "spaceSilence"}], "]"}]}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9150073652698936`*^9, 3.9150074113702865`*^9}, {
+  3.915868218061533*^9, 3.9158682182708797`*^9}},
+ CellLabel->"In[13]:=",ExpressionUUID->"f111fe99-6b60-4642-b911-b8d9ae0f3351"],
+
+Cell[BoxData[
+ RowBox[{"AudioPlay", "@", 
+  RowBox[{"toAudio", "[", 
+   RowBox[{"Lookup", "[", 
+    RowBox[{"alphabet", ",", "\"\<X\>\""}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.9150072470454464`*^9, 3.9150072668644743`*^9}, {
+  3.9150073398498583`*^9, 3.9150073592838836`*^9}, {3.915007414234291*^9, 
+  3.9150074438263316`*^9}, {3.9158682172011337`*^9, 3.915868221502539*^9}},
+ CellLabel->
+  "In[377]:=",ExpressionUUID->"b9b6e81b-dc19-4c23-aab6-c92026c6dc04"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Alphabet", "Title",
+ CellChangeTimes->{{3.915868713450696*^9, 
+  3.9158687155135283`*^9}},ExpressionUUID->"b2e62ecf-fb7c-44ab-9434-\
+8ce34d19f7cf"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"alphabet", "=", 
+   RowBox[{"{", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"\"\<A\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<B\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "0", ",", "0"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<C\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "1", ",", "0"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<D\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<E\>\"", "->", 
+      RowBox[{"{", "0", "}"}]}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<F\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "1", ",", "0"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<G\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<H\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "0"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<I\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<J\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "1", ",", "1"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     RowBox[{"\"\<K\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<L\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0", ",", "0"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<M\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<N\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<O\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]",
+      "\[IndentingNewLine]", 
+     RowBox[{"\"\<P\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "1", ",", "0"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<Q\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "0", ",", "1"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<R\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<S\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<T\>\"", "->", 
+      RowBox[{"{", "1", "}"}]}], ",", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<U\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<V\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0", ",", "0", ",", "1"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<W\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "1", ",", "1"}], "}"}]}], ",", "\[IndentingNewLine]", 
+     RowBox[{"\"\<X\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "0", ",", "1"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<Y\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "0", ",", "1", ",", "1"}], "}"}]}], ",", 
+     "\[IndentingNewLine]", 
+     RowBox[{"\"\<Z\>\"", "->", 
+      RowBox[{"{", 
+       RowBox[{"1", ",", "1", ",", "0", ",", "0"}], "}"}]}]}], 
+    "\[IndentingNewLine]", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"allKeys", "=", 
+   RowBox[{"Keys", "@", "alphabet"}]}], ";"}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.915005220662429*^9, 3.9150054186856346`*^9}, 
+   3.915005491078123*^9, {3.9150062110005918`*^9, 3.9150062185364785`*^9}, {
+   3.9150066562383094`*^9, 3.9150066584454403`*^9}},
+ CellLabel->"In[14]:=",ExpressionUUID->"9b4fe6c3-629f-4b46-ab0d-f74ed212e21b"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"toMorse", "=", 
+   RowBox[{"Function", "[", 
+    RowBox[{"state", ",", 
+     RowBox[{"StringJoin", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"If", "[", 
+         RowBox[{
+          RowBox[{"#", "===", "0"}], ",", "\"\<.\>\"", ",", "\"\<_\>\""}], 
+         "]"}], "&"}], "/@", "state"}], "]"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"toMorse", "@", 
+  RowBox[{"{", 
+   RowBox[{"0", ",", "1"}], "}"}]}]}], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.915006404489513*^9, 3.9150064420492315`*^9}},
+ CellLabel->"In[16]:=",ExpressionUUID->"36bebdfc-edcc-45a0-95c6-5aea44ccf863"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Character selection method", "Title",
+ CellChangeTimes->{{3.915868631786872*^9, 
+  3.915868641500347*^9}},ExpressionUUID->"95615535-1d34-4bba-af44-\
+96e055900191"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Magnify", "[", 
+    RowBox[{"#", ",", "2"}], "]"}], "&"}], "@", 
+  RowBox[{"Dynamic", "@", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"\"\<Current method: \>\"", "<>", "curMethod"}], ",", "Blue"}], 
+    "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9158691082838345`*^9, 3.9158691440583267`*^9}},
+ CellLabel->"In[48]:=",ExpressionUUID->"cdfe447d-be65-4502-af47-4922c1978153"],
+
+Cell["\<\
+Score:
+You get 1 point for the challenged character when you get the challenge right
+You lose 1 point when you get it wrong
+After the default 6 points you get a new character you can be challenged with
+The probability you'll be challenged with a given character is inversely \
+proportional to its score\
+\>", "Text",
+ CellChangeTimes->{{3.9158694747676225`*^9, 
+  3.9158695904275827`*^9}},ExpressionUUID->"c70d5cf0-9bd9-4da3-8ca6-\
+ac71d25f9eea"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Score", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"curMethod", "=", "\"\<Score\>\""}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"keyScores", "=", 
+     RowBox[{"<|", 
+      RowBox[{"\"\<A\>\"", "->", "0"}], "|>"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"newKeyScore", "=", "6"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"canAddNewKey", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{
+       RowBox[{"Min", "@", 
+        RowBox[{"Values", "@", "keyScores"}]}], ">", "newKeyScore"}], "]"}]}],
+     ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"addNewKey", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"Block", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"com", ",", "key"}], "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"com", "=", 
+          RowBox[{"Complement", "[", 
+           RowBox[{"allKeys", ",", 
+            RowBox[{"Keys", "@", "keyScores"}]}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Length", "@", "com"}], ">", "0"}], ",", 
+           "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"key", "=", 
+             RowBox[{"RandomChoice", "@", "allKeys"}]}], ";", 
+            "\[IndentingNewLine]", 
+            RowBox[{
+             RowBox[{"keyScores", "[", "key", "]"}], "=", "0"}]}]}], 
+          "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"RandomChoice", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Map", "[", 
+          RowBox[{
+           FractionBox["1.", "#"], "&"}], "]"}], "@", 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{"#", "+", 
+             RowBox[{"Min", "[", "#", "]"}], "+", "1"}], "&"}], ")"}], "@", 
+          RowBox[{"Abs", "@", 
+           RowBox[{"Values", "@", "keyScores"}]}]}]}], "->", 
+        RowBox[{"Keys", "@", "keyScores"}]}], "]"}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"incrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", 
+       RowBox[{
+        RowBox[{"keyScores", "[", "key", "]"}], "=", 
+        RowBox[{
+         RowBox[{"keyScores", "[", "key", "]"}], "+", "1"}]}]}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"decrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", 
+       RowBox[{
+        RowBox[{"keyScores", "[", "key", "]"}], "=", 
+        RowBox[{
+         RowBox[{"keyScores", "[", "key", "]"}], "-", "1"}]}]}], "]"}]}], 
+    ";"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9150065874254093`*^9, 3.9150069030766788`*^9}, {
+   3.9150953530769873`*^9, 3.915095383117028*^9}, {3.9150954420693626`*^9, 
+   3.9150955005960083`*^9}, {3.9154494139770193`*^9, 
+   3.9154494683661847`*^9}, {3.9154495481601553`*^9, 
+   3.9154495540845757`*^9}, {3.915449626764032*^9, 3.9154496578370733`*^9}, {
+   3.9154497386759596`*^9, 3.915449738827815*^9}, {3.915543515369296*^9, 
+   3.915543517405153*^9}, 3.915544777660761*^9, {3.9158681379110794`*^9, 
+   3.9158681528863273`*^9}, {3.915868377645422*^9, 3.915868378452425*^9}, {
+   3.9158684831715603`*^9, 3.9158684860913987`*^9}, {3.915869104344466*^9, 
+   3.915869107690384*^9}, 3.9158692831437674`*^9, 
+   3.9158729247199693`*^9},ExpressionUUID->"f0d0dee8-7dd5-4866-a81b-\
+af23feb7d589"],
+
+Cell["\<\
+Minibatches:
+The method randomly selects 4 keys and presents them for 30 challenges
+After that, it selects 4 more keys for 30 more challenges, and so on\
+\>", "Text",
+ CellChangeTimes->{{3.9158694747676225`*^9, 3.915869600332095*^9}, {
+  3.915869802994068*^9, 
+  3.9158698458587885`*^9}},ExpressionUUID->"ead0811d-ed74-4d03-bbfc-\
+1019120c00fc"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", "Minibatches", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"curMethod", "=", "\"\<Minibatches\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"batch", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"canAddNewKey", "=", 
+     RowBox[{"Function", "[", "False", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"addNewKey", "=", 
+     RowBox[{"Function", "[", "Null", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"batchStep", "=", "1000"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "=", 
+     RowBox[{"Function", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"batchStep", "++"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"batchStep", ">", "30"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"batch", "=", 
+           RowBox[{"RandomChoice", "[", 
+            RowBox[{
+             RowBox[{"Keys", "@", "alphabet"}], ",", "4"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"batchStep", "=", "0"}], ";"}]}], "\[IndentingNewLine]", 
+        "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"RandomChoice", "[", "batch", "]"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"incrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", "Null"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"decrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", "Null"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "[", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.9150065874254093`*^9, 3.9150069030766788`*^9}, {
+   3.9150953530769873`*^9, 3.915095383117028*^9}, {3.9150954420693626`*^9, 
+   3.9150955005960083`*^9}, {3.9154494139770193`*^9, 
+   3.9154494683661847`*^9}, {3.9154495481601553`*^9, 
+   3.9154495540845757`*^9}, {3.915449626764032*^9, 3.9154496578370733`*^9}, {
+   3.9154497386759596`*^9, 3.915449738827815*^9}, {3.915543515369296*^9, 
+   3.915543517405153*^9}, {3.915544425087019*^9, 3.9155445439666986`*^9}, {
+   3.915544770685917*^9, 3.915544771261365*^9}, 3.915545189419401*^9, {
+   3.915545235362842*^9, 3.9155452620599904`*^9}, 3.915545389290349*^9, {
+   3.915612787523113*^9, 3.9156127902712617`*^9}, {3.9158684918614197`*^9, 
+   3.9158684982687063`*^9}, {3.9158692092251616`*^9, 
+   3.9158692109547787`*^9}, {3.9158692584187555`*^9, 3.915869261510727*^9}, {
+   3.9158696301317763`*^9, 3.915869633533888*^9}, {3.9158696703646927`*^9, 
+   3.9158697122272005`*^9}, {3.915869742323797*^9, 3.9158697966437545`*^9}},
+ CellLabel->
+  "In[223]:=",ExpressionUUID->"9d71262c-bac4-48cb-88ba-3de423460181"],
+
+Cell["\<\
+In order:
+It goes through the alphabet in order\
+\>", "Text",
+ CellChangeTimes->{{3.915869857986073*^9, 3.915869864593227*^9}, {
+  3.915869939378186*^9, 
+  3.9158699413423643`*^9}},ExpressionUUID->"fdb79fd5-7c0d-420f-9b85-\
+daf08570e04a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"In", " ", "order"}], "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"curMethod", "=", "\"\<Alphabet in order\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"keyIndex", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"canAddNewKey", "=", 
+     RowBox[{"Function", "[", "False", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"addNewKey", "=", 
+     RowBox[{"Function", "[", "Null", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "=", 
+     RowBox[{"Function", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"keyIndex", "++"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"keyIndex", ">", 
+          RowBox[{"Length", "@", 
+           RowBox[{"Keys", "@", "alphabet"}]}]}], ",", 
+         RowBox[{"keyIndex", "=", "1"}]}], "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"Keys", "[", "alphabet", "]"}], "[", 
+        RowBox[{"[", "keyIndex", "]"}], "]"}]}], "\[IndentingNewLine]", 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"incrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", "Null"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"decrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", "Null"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "[", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.9150065874254093`*^9, 3.9150069030766788`*^9}, {
+   3.9150953530769873`*^9, 3.915095383117028*^9}, {3.9150954420693626`*^9, 
+   3.9150955005960083`*^9}, {3.9154494139770193`*^9, 
+   3.9154494683661847`*^9}, {3.9154495481601553`*^9, 
+   3.9154495540845757`*^9}, {3.915449626764032*^9, 3.9154496578370733`*^9}, {
+   3.9154497386759596`*^9, 3.915449738827815*^9}, {3.915543515369296*^9, 
+   3.915543517405153*^9}, {3.915544425087019*^9, 3.9155445439666986`*^9}, {
+   3.915544770685917*^9, 3.915544771261365*^9}, 3.915545189419401*^9, {
+   3.915545235362842*^9, 3.9155452620599904`*^9}, 3.915545389290349*^9, {
+   3.915612787523113*^9, 3.9156127902712617`*^9}, {3.9156895903344593`*^9, 
+   3.915689675746086*^9}, {3.915689753579795*^9, 3.9156898027645946`*^9}, {
+   3.9156898368336334`*^9, 3.9156898648254943`*^9}, {3.915690488749076*^9, 
+   3.915690494892152*^9}, {3.915868678619995*^9, 3.9158686795064793`*^9}, {
+   3.9158692144159727`*^9, 3.9158692541425657`*^9}, {3.915869866851423*^9, 
+   3.9158698673224216`*^9}},
+ CellLabel->
+  "In[214]:=",ExpressionUUID->"f651e4cb-9b0c-42e9-b8bf-fcf0277b08a3"],
+
+Cell["\<\
+Alphabet random order:
+It goes through the alphabet in a random order\
+\>", "Text",
+ CellChangeTimes->{{3.915869857986073*^9, 3.915869864593227*^9}, {
+  3.915869939378186*^9, 
+  3.9158699920008965`*^9}},ExpressionUUID->"bc02d614-2174-4f36-9bde-\
+583862a5c102"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{"Alphabet", " ", "random", " ", "order"}], "*)"}], 
+  "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"curMethod", "=", "\"\<Alphabet random order\>\""}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"keysList", "=", 
+     RowBox[{"RandomSample", "@", 
+      RowBox[{"Keys", "@", "alphabet"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"canAddNewKey", "=", 
+     RowBox[{"Function", "[", "True", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"addNewKey", "=", 
+     RowBox[{"Function", "[", "Null", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"Block", "[", 
+       RowBox[{
+        RowBox[{"{", "sel", "}"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"sel", "=", 
+          RowBox[{"First", "@", "keysList"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"keysList", "=", 
+          RowBox[{"Rest", "@", "keysList"}]}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Length", "@", "keysList"}], "==", "0"}], ",", 
+           RowBox[{"keysList", "=", 
+            RowBox[{"RandomSample", "@", 
+             RowBox[{"Keys", "@", "alphabet"}]}]}]}], "]"}], ";", 
+         "\[IndentingNewLine]", "sel"}]}], "\[IndentingNewLine]", "]"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"incrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", "Null"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"decrementScore", "=", 
+     RowBox[{"Function", "[", 
+      RowBox[{"key", ",", "Null"}], "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"selectPossibleKey", "[", "]"}], ";"}]}]}]], "Input",
+ CellChangeTimes->{{3.9150065874254093`*^9, 3.9150069030766788`*^9}, {
+   3.9150953530769873`*^9, 3.915095383117028*^9}, {3.9150954420693626`*^9, 
+   3.9150955005960083`*^9}, {3.9154494139770193`*^9, 
+   3.9154494683661847`*^9}, {3.9154495481601553`*^9, 
+   3.9154495540845757`*^9}, {3.915449626764032*^9, 3.9154496578370733`*^9}, {
+   3.9154497386759596`*^9, 3.915449738827815*^9}, {3.915543515369296*^9, 
+   3.915543517405153*^9}, {3.915544425087019*^9, 3.9155445439666986`*^9}, {
+   3.915544770685917*^9, 3.915544771261365*^9}, 3.915545189419401*^9, {
+   3.915545235362842*^9, 3.9155452620599904`*^9}, 3.915545389290349*^9, {
+   3.915612787523113*^9, 3.9156127902712617`*^9}, {3.9156895903344593`*^9, 
+   3.915689675746086*^9}, {3.915689753579795*^9, 3.9156898027645946`*^9}, {
+   3.9156898368336334`*^9, 3.9156898648254943`*^9}, {3.915690488749076*^9, 
+   3.915690602300042*^9}, {3.9158686835871954`*^9, 3.915868686645354*^9}, {
+   3.915869220704401*^9, 3.9158692503039556`*^9}, {3.9158698976987653`*^9, 
+   3.915869909362664*^9}},
+ CellLabel->
+  "In[206]:=",ExpressionUUID->"a541b85d-acf0-4028-8f64-ebf3ca7cf9aa"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Character \[Rule] Code", "Title",
+ CellChangeTimes->{{3.9158685714836025`*^9, 3.915868573394743*^9}, {
+   3.915868734193291*^9, 3.915868736970863*^9}, 
+   3.915868943984248*^9},ExpressionUUID->"895d6dc1-efd0-4424-ac66-\
+68606c8233e9"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Magnify", "[", 
+    RowBox[{"#", ",", "2"}], "]"}], "&"}], "@", 
+  RowBox[{"Dynamic", "@", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"\"\<Current method: \>\"", "<>", "curMethod"}], ",", "Blue"}], 
+    "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9158691082838345`*^9, 3.9158691440583267`*^9}},
+ CellLabel->
+  "In[222]:=",ExpressionUUID->"ca3dea94-61a9-4c30-a3fe-ce45b517e11c"],
+
+Cell["\<\
+Evaluate this cell, then click in the text box it creates and type the \
+correct beep pattern for the displayed character. \
+\>", "Text",
+ CellChangeTimes->{{3.915869004655754*^9, 
+  3.915869047271182*^9}},ExpressionUUID->"5a71521f-5fc2-40a3-98cf-\
+d0111ff20be7"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"curKey", "=", 
+   RowBox[{"RandomChoice", "@", 
+    RowBox[{"Keys", "@", "keyScores"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"state", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"msg", "=", "\"\<\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", "msg"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"Row", "[", 
+   RowBox[{"{", "curKey", "}"}], "]"}]}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"toMorse", "@", "state"}]}], "\[IndentingNewLine]", 
+ RowBox[{"EventHandler", "[", 
+  RowBox[{
+   RowBox[{"InputField", "[", 
+    RowBox[{"\"\<\>\"", ",", "String"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"\"\<KeyDown\>\"", ":>", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "key", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"key", "=", 
+        RowBox[{"CurrentValue", "@", "\"\<EventKey\>\""}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Switch", "[", 
+        RowBox[{"key", ",", "\[IndentingNewLine]", "\"\<j\>\"", ",", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"state", ",", "0"}], "]"}], ",", "\[IndentingNewLine]", 
+         "\"\<k\>\"", ",", 
+         RowBox[{"AppendTo", "[", 
+          RowBox[{"state", ",", "1"}], "]"}], ",", "\[IndentingNewLine]", 
+         "\"\< \>\"", ",", 
+         RowBox[{"Block", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"morse", ",", "aud"}], "}"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"morse", "=", 
+             RowBox[{"toMorse", "@", "state"}]}], ";", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"Lookup", "[", 
+                RowBox[{"alphabet", ",", "curKey"}], "]"}], "===", "state"}], 
+              ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"msg", "=", 
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "\"\<Correct \>\"", "<>", "curKey", "<>", "\"\< = \>\"", "<>",
+                    "morse"}], ",", 
+                  RowBox[{"Darker", "@", " ", "Green"}]}], "]"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"lastKey", "=", "curKey"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"aud", "=", 
+                RowBox[{"AudioPlay", "@", 
+                 RowBox[{"toAudio", "@", 
+                  RowBox[{"Lookup", "[", 
+                   RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"incrementScore", "@", "curKey"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"canAddNewKey", "[", "]"}], ",", 
+                 RowBox[{"addNewKey", "[", "]"}]}], "]"}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"curKey", "=", 
+                RowBox[{"selectPossibleKey", "[", "]"}]}]}], ",", 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"msg", "=", 
+                RowBox[{"Style", "[", 
+                 RowBox[{
+                  RowBox[{
+                  "\"\<Wrong   \>\"", "<>", "curKey", "<>", 
+                   "\"\< \[NotEqual] \>\"", "<>", "morse"}], ",", " ", 
+                  "Red"}], "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"decrementScore", "@", "curKey"}]}]}], 
+             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"state", "=", 
+             RowBox[{"{", "}"}]}], ";"}]}], "\[IndentingNewLine]", "]"}], ",",
+          "\[IndentingNewLine]", "True", ",", "Null"}], "\[IndentingNewLine]",
+         "]"}]}]}], "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.915005516856228*^9, 3.915005525302988*^9}, {
+  3.915005871481632*^9, 3.9150062065773916`*^9}, {3.915006238323723*^9, 
+  3.915006501927888*^9}, {3.9150065370002637`*^9, 3.9150065504231057`*^9}, {
+  3.9150069152389545`*^9, 3.915006968918687*^9}, {3.915007456962352*^9, 
+  3.9150075075462875`*^9}, {3.915007586362776*^9, 3.9150076233040037`*^9}, {
+  3.91500767730751*^9, 3.9150077596564436`*^9}, {3.9150954146550646`*^9, 
+  3.9150954148060627`*^9}, {3.915545053621003*^9, 3.915545058339899*^9}},
+ CellLabel->
+  "In[247]:=",ExpressionUUID->"54bd5346-7b3e-4cb1-a751-968191e8defc"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Code \[Rule] Character", "Title",
+ CellChangeTimes->{{3.9158685869387364`*^9, 3.9158685887147284`*^9}, {
+   3.9158687411370487`*^9, 3.915868741619749*^9}, 
+   3.9158689446886415`*^9},ExpressionUUID->"830534d6-0d54-4ea2-a273-\
+f09d60d6e11f"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Magnify", "[", 
+    RowBox[{"#", ",", "2"}], "]"}], "&"}], "@", 
+  RowBox[{"Dynamic", "@", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"\"\<Current method: \>\"", "<>", "curMethod"}], ",", "Blue"}], 
+    "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9158691082838345`*^9, 3.9158691440583267`*^9}},
+ CellLabel->"In[48]:=",ExpressionUUID->"b95f721c-3ec7-4ca4-85bf-8b33518b60ba"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"curKey", "=", 
+   RowBox[{"RandomChoice", "@", 
+    RowBox[{"Keys", "@", "keyScores"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AudioPlay", "@", 
+   RowBox[{"toAudio", "@", 
+    RowBox[{"Lookup", "[", 
+     RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"state", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"msg", "=", "\"\<\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", "msg"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"toMorse", "@", 
+   RowBox[{"Lookup", "[", 
+    RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", 
+  RowBox[{"toMorse", "@", "state"}]}], "\[IndentingNewLine]", 
+ RowBox[{"EventHandler", "[", 
+  RowBox[{
+   RowBox[{"InputField", "[", 
+    RowBox[{"\"\<\>\"", ",", "String"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"\"\<KeyDown\>\"", ":>", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "key", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"key", "=", 
+        RowBox[{"ToUpperCase", "@", 
+         RowBox[{"CurrentValue", "@", "\"\<EventKey\>\""}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"If", "[", 
+        RowBox[{
+         RowBox[{"curKey", "==", "key"}], ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"msg", "=", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"\"\<Correct \>\"", "<>", "key", "<>", "\"\< = \>\"", "<>", 
+              RowBox[{"toMorse", "@", 
+               RowBox[{"Lookup", "[", 
+                RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], ",", 
+             RowBox[{"Darker", "@", " ", "Green"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"lastKey", "=", "curKey"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"incrementScore", "@", "curKey"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"canAddNewKey", "[", "]"}], ",", 
+            RowBox[{"addNewKey", "[", "]"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"curKey", "=", 
+           RowBox[{"selectPossibleKey", "[", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AudioPlay", "@", 
+           RowBox[{"toAudio", "@", 
+            RowBox[{"Lookup", "[", 
+             RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], ";"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"msg", "=", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"\"\<Wrong   \>\"", "<>", 
+              RowBox[{"toMorse", "@", 
+               RowBox[{"Lookup", "[", 
+                RowBox[{"alphabet", ",", "curKey"}], "]"}]}], "<>", 
+              "\"\< \[NotEqual] \>\"", "<>", "key"}], ",", " ", "Red"}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"decrementScore", "@", "curKey"}]}]}], 
+        "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+       RowBox[{"state", "=", 
+        RowBox[{"{", "}"}]}], ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
+  "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.915005516856228*^9, 3.915005525302988*^9}, {
+  3.915005871481632*^9, 3.9150062065773916`*^9}, {3.915006238323723*^9, 
+  3.915006501927888*^9}, {3.9150065370002637`*^9, 3.9150065504231057`*^9}, {
+  3.9150069152389545`*^9, 3.915006968918687*^9}, {3.915007456962352*^9, 
+  3.9150075075462875`*^9}, {3.915007586362776*^9, 3.9150076233040037`*^9}, {
+  3.91500767730751*^9, 3.9150077596564436`*^9}, {3.9150954146550646`*^9, 
+  3.9150954148060627`*^9}, {3.9155431727988153`*^9, 3.9155432184880266`*^9}, {
+  3.915543262998505*^9, 3.9155433668247037`*^9}, {3.915543411738628*^9, 
+  3.915543450806808*^9}, {3.915543596606334*^9, 3.9155435992439747`*^9}},
+ CellLabel->"In[36]:=",ExpressionUUID->"59defd91-f1d0-427c-8a5e-b3942307d77d"]
+}, Closed]],
+
+Cell[CellGroupData[{
+
+Cell["Beeps \[Rule] Character", "Title",
+ CellChangeTimes->{{3.9158686002587657`*^9, 3.915868603706363*^9}, 
+   3.91586874348234*^9, 
+   3.915868946424296*^9},ExpressionUUID->"6e294d7f-8a78-446e-8507-\
+7eb8cb2eef8a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Magnify", "[", 
+    RowBox[{"#", ",", "2"}], "]"}], "&"}], "@", 
+  RowBox[{"Dynamic", "@", 
+   RowBox[{"Style", "[", 
+    RowBox[{
+     RowBox[{"\"\<Current method: \>\"", "<>", "curMethod"}], ",", "Blue"}], 
+    "]"}]}]}]], "Input",
+ InitializationCell->True,
+ CellChangeTimes->{{3.9158691082838345`*^9, 3.9158691440583267`*^9}},
+ CellLabel->"In[48]:=",ExpressionUUID->"0e0206ac-dd41-4a50-a9ce-066616f9c6aa"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"curKey", "=", 
+   RowBox[{"RandomChoice", "@", 
+    RowBox[{"Keys", "@", "keyScores"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"AudioPlay", "@", 
+   RowBox[{"toAudio", "@", 
+    RowBox[{"Lookup", "[", 
+     RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"msg", "=", "\"\<\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Dynamic", "@", "msg"}], "\[IndentingNewLine]", 
+ RowBox[{"EventHandler", "[", 
+  RowBox[{
+   RowBox[{"InputField", "[", 
+    RowBox[{"\"\<\>\"", ",", "String"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"\"\<KeyDown\>\"", ":>", 
+    RowBox[{"Block", "[", 
+     RowBox[{
+      RowBox[{"{", "key", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"key", "=", 
+        RowBox[{"ToUpperCase", "@", 
+         RowBox[{"CurrentValue", "@", "\"\<EventKey\>\""}]}]}], ";", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Switch", "[", 
+        RowBox[{
+        "key", ",", "\[IndentingNewLine]", "\"\< \>\"", ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"AudioPlay", "@", 
+           RowBox[{"toAudio", "@", 
+            RowBox[{"Lookup", "[", 
+             RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], ";"}], ",", 
+         "\[IndentingNewLine]", "curKey", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"msg", "=", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"\"\<Correct \>\"", "<>", "key", "<>", "\"\< = \>\"", "<>", 
+              RowBox[{"toMorse", "@", 
+               RowBox[{"Lookup", "[", 
+                RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], ",", 
+             RowBox[{"Darker", "@", " ", "Green"}]}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"lastKey", "=", "curKey"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"incrementScore", "@", "curKey"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"If", "[", 
+           RowBox[{
+            RowBox[{"canAddNewKey", "[", "]"}], ",", 
+            RowBox[{"addNewKey", "[", "]"}]}], "]"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"curKey", "=", 
+           RowBox[{"selectPossibleKey", "[", "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"AudioPlay", "@", 
+           RowBox[{"toAudio", "@", 
+            RowBox[{"Lookup", "[", 
+             RowBox[{"alphabet", ",", "curKey"}], "]"}]}]}], ";"}], ",", 
+         "\[IndentingNewLine]", "_", ",", "\[IndentingNewLine]", 
+         RowBox[{
+          RowBox[{"msg", "=", 
+           RowBox[{"Style", "[", 
+            RowBox[{
+             RowBox[{"\"\<Wrong   \>\"", "<>", 
+              RowBox[{"toMorse", "@", 
+               RowBox[{"Lookup", "[", 
+                RowBox[{"alphabet", ",", "curKey"}], "]"}]}], "<>", 
+              "\"\< \[NotEqual] \>\"", "<>", "key"}], ",", " ", "Red"}], 
+            "]"}]}], ";", "\[IndentingNewLine]", 
+          RowBox[{"decrementScore", "@", "curKey"}]}]}], 
+        "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
+     "]"}]}]}], "\[IndentingNewLine]", "]"}]}], "Input",
+ CellChangeTimes->{{3.915005516856228*^9, 3.915005525302988*^9}, {
+  3.915005871481632*^9, 3.9150062065773916`*^9}, {3.915006238323723*^9, 
+  3.915006501927888*^9}, {3.9150065370002637`*^9, 3.9150065504231057`*^9}, {
+  3.9150069152389545`*^9, 3.915006968918687*^9}, {3.915007456962352*^9, 
+  3.9150075075462875`*^9}, {3.915007586362776*^9, 3.9150076233040037`*^9}, {
+  3.91500767730751*^9, 3.9150077596564436`*^9}, {3.9150954146550646`*^9, 
+  3.9150954148060627`*^9}, {3.9155431727988153`*^9, 3.9155432184880266`*^9}, {
+  3.915543262998505*^9, 3.9155433668247037`*^9}, {3.915543411738628*^9, 
+  3.915543450806808*^9}, {3.915543596606334*^9, 3.9155435992439747`*^9}, {
+  3.9158570808407965`*^9, 3.9158571890028853`*^9}, {3.915857256144879*^9, 
+  3.9158572625439124`*^9}},
+ CellLabel->"In[44]:=",ExpressionUUID->"63e5199e-6e74-4436-b4d0-80f6ece70c85"]
+}, Closed]]
+},
+WindowSize->{716.25, 743.25},
+WindowMargins->{{Automatic, 2.25}, {Automatic, 0}},
+FrontEndVersion->"13.0 for Microsoft Windows (64-bit) (February 4, 2022)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"675de280-92b4-41bc-8136-2d124a7c58bf"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 945, 18, 242, "Text",ExpressionUUID->"1362ba3e-3b92-4aa9-9cea-769a42585623"],
+Cell[CellGroupData[{
+Cell[1528, 42, 156, 3, 98, "Title",ExpressionUUID->"cbf887a3-7f07-47db-9f5e-eb16687b62ea"],
+Cell[1687, 47, 537, 13, 44, "Input",ExpressionUUID->"a62efcec-734f-497e-8210-3e238d33e44f",
+ InitializationCell->True],
+Cell[2227, 62, 830, 14, 64, "Input",ExpressionUUID->"993864db-2192-45c7-9e58-e07a8e870b4c",
+ InitializationCell->True],
+Cell[3060, 78, 2855, 78, 254, "Input",ExpressionUUID->"3e2682ae-2e64-4bdd-a184-bf39cdec2b9f",
+ InitializationCell->True],
+Cell[5918, 158, 854, 22, 102, "Input",ExpressionUUID->"f111fe99-6b60-4642-b911-b8d9ae0f3351",
+ InitializationCell->True],
+Cell[6775, 182, 470, 9, 28, "Input",ExpressionUUID->"b9b6e81b-dc19-4c23-aab6-c92026c6dc04"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[7282, 196, 153, 3, 72, "Title",ExpressionUUID->"b2e62ecf-fb7c-44ab-9434-8ce34d19f7cf"],
+Cell[7438, 201, 4183, 103, 654, "Input",ExpressionUUID->"9b4fe6c3-629f-4b46-ab0d-f74ed212e21b",
+ InitializationCell->True],
+Cell[11624, 306, 649, 18, 64, "Input",ExpressionUUID->"36bebdfc-edcc-45a0-95c6-5aea44ccf863",
+ InitializationCell->True]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12310, 329, 169, 3, 98, "Title",ExpressionUUID->"95615535-1d34-4bba-af44-96e055900191"],
+Cell[12482, 334, 456, 12, 44, "Input",ExpressionUUID->"cdfe447d-be65-4502-af47-4922c1978153",
+ InitializationCell->True],
+Cell[12941, 348, 456, 10, 127, "Text",ExpressionUUID->"c70d5cf0-9bd9-4da3-8ca6-ac71d25f9eea"],
+Cell[13400, 360, 3644, 94, 404, "Input",ExpressionUUID->"f0d0dee8-7dd5-4866-a81b-af23feb7d589",
+ InitializationCell->True],
+Cell[17047, 456, 355, 8, 81, "Text",ExpressionUUID->"ead0811d-ed74-4d03-bbfc-1019120c00fc"],
+Cell[17405, 466, 2853, 61, 333, "Input",ExpressionUUID->"9d71262c-bac4-48cb-88ba-3de423460181"],
+Cell[20261, 529, 248, 7, 58, "Text",ExpressionUUID->"fdb79fd5-7c0d-420f-9b85-daf08570e04a"],
+Cell[20512, 538, 2679, 57, 257, "Input",ExpressionUUID->"f651e4cb-9b0c-42e9-b8bf-fcf0277b08a3"],
+Cell[23194, 597, 270, 7, 58, "Text",ExpressionUUID->"bc02d614-2174-4f36-9bde-583862a5c102"],
+Cell[23467, 606, 2985, 65, 276, "Input",ExpressionUUID->"a541b85d-acf0-4028-8f64-ebf3ca7cf9aa"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[26489, 676, 240, 4, 72, "Title",ExpressionUUID->"895d6dc1-efd0-4424-ac66-68606c8233e9"],
+Cell[26732, 682, 460, 13, 44, "Input",ExpressionUUID->"ca3dea94-61a9-4c30-a3fe-ce45b517e11c",
+ InitializationCell->True],
+Cell[27195, 697, 273, 6, 58, "Text",ExpressionUUID->"5a71521f-5fc2-40a3-98cf-d0111ff20be7"],
+Cell[27471, 705, 4505, 98, 581, "Input",ExpressionUUID->"54bd5346-7b3e-4cb1-a751-968191e8defc"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[32013, 808, 246, 4, 72, "Title",ExpressionUUID->"830534d6-0d54-4ea2-a273-f09d60d6e11f"],
+Cell[32262, 814, 456, 12, 44, "Input",ExpressionUUID->"b95f721c-3ec7-4ca4-85bf-8b33518b60ba",
+ InitializationCell->True],
+Cell[32721, 828, 3985, 89, 466, "Input",ExpressionUUID->"59defd91-f1d0-427c-8a5e-b3942307d77d"]
+}, Closed]],
+Cell[CellGroupData[{
+Cell[36743, 922, 216, 4, 72, "Title",ExpressionUUID->"6e294d7f-8a78-446e-8507-7eb8cb2eef8a"],
+Cell[36962, 928, 456, 12, 44, "Input",ExpressionUUID->"0e0206ac-dd41-4a50-a9ce-066616f9c6aa",
+ InitializationCell->True],
+Cell[37421, 942, 4000, 87, 466, "Input",ExpressionUUID->"63e5199e-6e74-4436-b4d0-80f6ece70c85"]
+}, Closed]]
+}
+]
+*)
+
